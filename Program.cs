@@ -1,7 +1,7 @@
 ﻿float dollars = 56.4f;
 float rubs = 1045.0f;
 float euros = 10.0f;
-string endCycle = "exit";
+string comandExit = "exit";
 float dolToRub = 70.07f;
 float dolToEur = 0.92f;
 float rubToDol = 0.014f;
@@ -10,11 +10,18 @@ float eurToDol = 1.09f;
 float eurToRub = 76.46f;
 float amountOfExchange;
 Console.WriteLine("Здравствуйте. Хотите начать работу с конвертером валют? Для согласия напишите 'да'");
-string isWorking = Console.ReadLine();
+string answer = Console.ReadLine();
+string entryCondition = "да";
+const string UsdToRubCommand = "1";
+const string UsdToEurCommand = "2";
+const string RubToUsdCommand = "3";
+const string RubToEurCommand = "4";
+const string EurToUsdCommand = "5";
+const string EurToRubCommand = "6";
 
-if (isWorking == "да")
+if (answer == entryCondition)
 {
-    while (isWorking != endCycle)
+    while (answer != comandExit)
     {
         Console.WriteLine("Добро пожаловать в конвертер валют!\n\nЧто вы хотите обменять?\nДоллары: в рубли - 1, в евро - 2\nРубли: в доллары - 3, в евро - 4\nЕвро: в доллары - 5 в рубли - 6");
         Console.WriteLine($"Ваш баланс: рубли - {rubs}; доллары - {dollars}; евро - {euros}");
@@ -22,7 +29,7 @@ if (isWorking == "да")
 
         switch (userInput)
         {
-            case "1":
+            case UsdToRubCommand:
                 Console.WriteLine("Сколько долларов вы хотите обменять?");
                 amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
@@ -35,9 +42,10 @@ if (isWorking == "да")
                 {
                     Console.WriteLine("Недостаточно данной валюты на балансе.");
                 }
+
                 break;
 
-            case "2":
+            case UsdToEurCommand:
                 Console.WriteLine("Сколько долларов вы хотите обменять?");
                 amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
@@ -51,9 +59,10 @@ if (isWorking == "да")
                 {
                     Console.WriteLine("Недостаточно данной валюты на балансе.");
                 }
+
                 break;
 
-            case "3":
+            case RubToUsdCommand:
                 Console.WriteLine("Сколько рублей вы хотите обменять?");
                 amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
@@ -66,9 +75,10 @@ if (isWorking == "да")
                 {
                     Console.WriteLine("Недостаточно данной валюты на балансе.");
                 }
+
                 break;
 
-            case "4":
+            case RubToEurCommand:
                 Console.WriteLine("Сколько рублей вы хотите обменять?");
                 amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
@@ -81,9 +91,10 @@ if (isWorking == "да")
                 {
                     Console.WriteLine("Недостаточно данной валюты на балансе.");
                 }
+
                 break;
 
-            case "5":
+            case EurToUsdCommand:
                 Console.WriteLine("Сколько евро вы хотите обменять?");
                 amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
@@ -96,9 +107,10 @@ if (isWorking == "да")
                 {
                     Console.WriteLine("Недостаточно данной валюты на балансе.");
                 }
+
                 break;
 
-            case "6":
+            case EurToRubCommand:
                 Console.WriteLine("Сколько евро вы хотите обменять?");
                 amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
@@ -111,6 +123,7 @@ if (isWorking == "да")
                 {
                     Console.WriteLine("Недостаточно данной валюты на балансе.");
                 }
+
                 break;
 
             default:
@@ -121,11 +134,11 @@ if (isWorking == "да")
 
         Console.WriteLine($"Ваш баланс: рубли - {rubs}; доллары - {dollars}; евро - {euros}");
         Console.WriteLine("Спасибо. Если желаете выйти из программы, напишите 'да', в противном случае пишите что угодно");
-        endCycle = Console.ReadLine();
+        comandExit = Console.ReadLine();
         Console.Clear();
     }
 }
-else 
+else
 {
     Console.WriteLine("Обязательно заходите в программу в следующий раз.");
 }
