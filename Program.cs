@@ -1,4 +1,11 @@
-﻿float dollars = 56.4f;
+﻿const string UsdToRubCommand = "1";
+const string UsdToEurCommand = "2";
+const string RubToUsdCommand = "3";
+const string RubToEurCommand = "4";
+const string EurToUsdCommand = "5";
+const string EurToRubCommand = "6";
+
+float dollars = 56.4f;
 float rubs = 1045.0f;
 float euros = 10.0f;
 string comandExit = "exit";
@@ -12,12 +19,6 @@ float amountOfExchange;
 Console.WriteLine("Здравствуйте. Хотите начать работу с конвертером валют? Для согласия напишите 'да'");
 string answer = Console.ReadLine();
 string entryCondition = "да";
-const string UsdToRubCommand = "1";
-const string UsdToEurCommand = "2";
-const string RubToUsdCommand = "3";
-const string RubToEurCommand = "4";
-const string EurToUsdCommand = "5";
-const string EurToRubCommand = "6";
 
 if (answer == entryCondition)
 {
