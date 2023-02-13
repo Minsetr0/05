@@ -24,7 +24,7 @@ if (answer == entryCondition)
 {
     while (answer != comandExit)
     {
-        Console.WriteLine("Добро пожаловать в конвертер валют!\n\nЧто вы хотите обменять?\nДоллары: в рубли - 1, в евро - 2\nРубли: в доллары - 3, в евро - 4\nЕвро: в доллары - 5 в рубли - 6");
+        Console.WriteLine($"Добро пожаловать в конвертер валют!\n\nЧто вы хотите обменять?\nДоллары: в рубли - {UsdToRubCommand}, в евро - {UsdToEurCommand}\nРубли: в доллары - {RubToUsdCommand}, в евро - {RubToEurCommand}\nЕвро: в доллары - {EurToUsdCommand} в рубли - {EurToRubCommand}");
         Console.WriteLine($"Ваш баланс: рубли - {rubs}; доллары - {dollars}; евро - {euros}");
         string userInput = Console.ReadLine();
 
