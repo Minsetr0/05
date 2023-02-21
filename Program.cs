@@ -4,142 +4,133 @@ const string RubToUsdCommand = "3";
 const string RubToEurCommand = "4";
 const string EurToUsdCommand = "5";
 const string EurToRubCommand = "6";
+const float UsdToRub = 70.07f;
+const float UsdToEur = 0.92f;
+const float RubToUsd = 0.014f;
+const float RubToEur = 0.013f;
+const float EurToUsd = 1.09f;
+const float EurToRub = 76.46f;
 
-float dollars = 56.4f;
-float rubs = 1045.0f;
-float euros = 10.0f;
-string comandExit = "exit";
-float dolToRub = 70.07f;
-float dolToEur = 0.92f;
-float rubToDol = 0.014f;
-float rubToEur = 0.013f;
-float eurToDol = 1.09f;
-float eurToRub = 76.46f;
+float USD = 56.4f;
+float RUB = 1045.0f;
+float EUR = 10.0f;
+string comandExit = "";
 float amountOfExchange;
-Console.WriteLine("Здравствуйте. Хотите начать работу с конвертером валют? Для согласия напишите 'да'");
-string answer = Console.ReadLine();
-string entryCondition = "да";
-
-if (answer == entryCondition)
+string answer = "exit";
+while (answer != comandExit)
 {
-    while (answer != comandExit)
+    Console.WriteLine($"Добро пожаловать в конвертер валют!\n\nЧто вы хотите обменять?\nДоллары: в рубли - {UsdToRubCommand}, в евро - {UsdToEurCommand}" +
+        $"\nРубли: в доллары - {RubToUsdCommand}, в евро - {RubToEurCommand}\nЕвро: в доллары - {EurToUsdCommand} в рубли - {EurToRubCommand}");
+    Console.WriteLine($"Ваш баланс: рубли - {RUB}; доллары - {USD}; евро - {EUR}");
+    string userInput = Console.ReadLine();
+
+    switch (userInput)
     {
-        Console.WriteLine($"Добро пожаловать в конвертер валют!\n\nЧто вы хотите обменять?\nДоллары: в рубли - {UsdToRubCommand}, в евро - {UsdToEurCommand}\nРубли: в доллары - {RubToUsdCommand}, в евро - {RubToEurCommand}\nЕвро: в доллары - {EurToUsdCommand} в рубли - {EurToRubCommand}");
-        Console.WriteLine($"Ваш баланс: рубли - {rubs}; доллары - {dollars}; евро - {euros}");
-        string userInput = Console.ReadLine();
+        case UsdToRubCommand:
+            Console.WriteLine("Сколько долларов вы хотите обменять?");
+            amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
-        switch (userInput)
-        {
-            case UsdToRubCommand:
-                Console.WriteLine("Сколько долларов вы хотите обменять?");
-                amountOfExchange = Convert.ToSingle(Console.ReadLine());
+            if (USD >= amountOfExchange)
+            {
+                RUB += amountOfExchange * UsdToRub;
+                USD -= amountOfExchange;
+            }
+            else
+            {
+                Console.WriteLine("Недостаточно данной валюты на балансе.");
+            }
 
-                if (dollars >= amountOfExchange)
-                {
-                    rubs += amountOfExchange * dolToRub;
-                    dollars -= amountOfExchange;
-                }
-                else
-                {
-                    Console.WriteLine("Недостаточно данной валюты на балансе.");
-                }
+            break;
 
-                break;
+         case UsdToEurCommand:
+            Console.WriteLine("Сколько долларов вы хотите обменять?");
+            amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
-            case UsdToEurCommand:
-                Console.WriteLine("Сколько долларов вы хотите обменять?");
-                amountOfExchange = Convert.ToSingle(Console.ReadLine());
+            if (USD >= amountOfExchange)
+            {
+                EUR += amountOfExchange * UsdToEur;
+                USD -= amountOfExchange;
 
-                if (dollars >= amountOfExchange)
-                {
-                    euros += amountOfExchange * dolToEur;
-                    dollars -= amountOfExchange;
+            }
+            else
+            {
+                Console.WriteLine("Недостаточно данной валюты на балансе.");
+            }
 
-                }
-                else
-                {
-                    Console.WriteLine("Недостаточно данной валюты на балансе.");
-                }
+            break;
 
-                break;
+          case RubToUsdCommand:
+            Console.WriteLine("Сколько рублей вы хотите обменять?");
+            amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
-            case RubToUsdCommand:
-                Console.WriteLine("Сколько рублей вы хотите обменять?");
-                amountOfExchange = Convert.ToSingle(Console.ReadLine());
+            if (RUB >= amountOfExchange)
+            {
+                USD += amountOfExchange * RubToUsd;
+                RUB -= amountOfExchange;
+            }
+            else
+            {
+                Console.WriteLine("Недостаточно данной валюты на балансе.");
+            }
+    
+            break;
 
-                if (rubs >= amountOfExchange)
-                {
-                    dollars += amountOfExchange * rubToDol;
-                    rubs -= amountOfExchange;
-                }
-                else
-                {
-                    Console.WriteLine("Недостаточно данной валюты на балансе.");
-                }
+        case RubToEurCommand:
+            Console.WriteLine("Сколько рублей вы хотите обменять?");
+            amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
-                break;
+            if (RUB >= amountOfExchange)
+            {
+                EUR += amountOfExchange * RubToEur;
+                RUB -= amountOfExchange;
+            }
+            else
+            {
+                Console.WriteLine("Недостаточно данной валюты на балансе.");
+            }
 
-            case RubToEurCommand:
-                Console.WriteLine("Сколько рублей вы хотите обменять?");
-                amountOfExchange = Convert.ToSingle(Console.ReadLine());
+            break;
 
-                if (rubs >= amountOfExchange)
-                {
-                    euros += amountOfExchange * rubToEur;
-                    rubs -= amountOfExchange;
-                }
-                else
-                {
-                    Console.WriteLine("Недостаточно данной валюты на балансе.");
-                }
+        case EurToUsdCommand:
+            Console.WriteLine("Сколько евро вы хотите обменять?");
+            amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
-                break;
+            if (EUR >= amountOfExchange)
+            {
+                USD += amountOfExchange * EurToUsd;
+                EUR -= amountOfExchange;
+            }
+            else
+            {
+                Console.WriteLine("Недостаточно данной валюты на балансе.");
+            }
 
-            case EurToUsdCommand:
-                Console.WriteLine("Сколько евро вы хотите обменять?");
-                amountOfExchange = Convert.ToSingle(Console.ReadLine());
+            break;
 
-                if (euros >= amountOfExchange)
-                {
-                    dollars += amountOfExchange * eurToDol;
-                    euros -= amountOfExchange;
-                }
-                else
-                {
-                    Console.WriteLine("Недостаточно данной валюты на балансе.");
-                }
+        case EurToRubCommand:
+            Console.WriteLine("Сколько евро вы хотите обменять?");
+            amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
-                break;
+            if (EUR >= amountOfExchange)
+            {
+                RUB += amountOfExchange * EurToRub;
+                EUR -= amountOfExchange;
+            }
+            else
+            {
+                Console.WriteLine("Недостаточно данной валюты на балансе.");
+            }
 
-            case EurToRubCommand:
-                Console.WriteLine("Сколько евро вы хотите обменять?");
-                amountOfExchange = Convert.ToSingle(Console.ReadLine());
+            break;
 
-                if (euros >= amountOfExchange)
-                {
-                    rubs += amountOfExchange * eurToRub;
-                    euros -= amountOfExchange;
-                }
-                else
-                {
-                    Console.WriteLine("Недостаточно данной валюты на балансе.");
-                }
-
-                break;
-
-            default:
-                Console.WriteLine("Я вас не понял.");
-
-                break;
-        }
-
-        Console.WriteLine($"Ваш баланс: рубли - {rubs}; доллары - {dollars}; евро - {euros}");
-        Console.WriteLine("Спасибо. Если желаете выйти из программы, напишите 'да', в противном случае пишите что угодно");
-        comandExit = Console.ReadLine();
-        Console.Clear();
+         default:
+            Console.WriteLine("Я вас не понял.");
+           
+            break;
     }
-}
-else
-{
-    Console.WriteLine("Обязательно заходите в программу в следующий раз.");
+
+    Console.WriteLine($"Ваш баланс: рубли - {RUB}; доллары - {USD}; евро - {EUR}");
+    Console.WriteLine("Спасибо. Если желаете выйти из программы, напишите " + answer + ", в противном случае пишите что угодно");
+    comandExit = Console.ReadLine();
+    Console.Clear();
 }
