@@ -1,4 +1,5 @@
-﻿const string ConvertUsdToRubCommand = "1";
+﻿const string Answer = "exit";
+const string ConvertUsdToRubCommand = "1";
 const string ConvertUsdToEurCommand = "2";
 const string ConvertRubToUsdCommand = "3";
 const string ConvertRubToEurCommand = "4";
@@ -14,10 +15,10 @@ const float EurToRub = 76.46f;
 float balanceUSD = 56.4f;
 float balanceRUB = 1045.0f;
 float balanceEUR = 10.0f;
-string comandExit = "";
+string commandExit = "";
 float amountOfExchange;
-string answer = "exit";
-while (answer != comandExit)
+
+while (Answer != commandExit)
 {
     Console.WriteLine($"Добро пожаловать в конвертер валют!\n\nЧто вы хотите обменять?\nДоллары: в рубли - {ConvertUsdToRubCommand}, в евро - {ConvertUsdToEurCommand}" +
         $"\nРубли: в доллары - {ConvertRubToUsdCommand}, в евро - {ConvertRubToEurCommand}\nЕвро: в доллары - {ConvertEurToUsdCommand} в рубли - {ConvertEurToRubCommand}");
@@ -121,8 +122,9 @@ while (answer != comandExit)
             Console.WriteLine("Я вас не понял.");
             break;
     }
+
     Console.WriteLine($"Ваш баланс: рубли - {balanceRUB}; доллары - {balanceUSD}; евро - {balanceEUR}");
-    Console.WriteLine("Спасибо. Если желаете выйти из программы, напишите " + answer + ", в противном случае пишите что угодно");
-    comandExit = Console.ReadLine();
+    Console.WriteLine("Спасибо. Если желаете выйти из программы, напишите " + Answer + ", в противном случае пишите что угодно");
+    commandExit = Console.ReadLine();
     Console.Clear();
 }
